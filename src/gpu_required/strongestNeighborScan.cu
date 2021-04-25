@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-__global__ int getStrongerThreadIndex(int * oldWeight, int * oldDst, int curTID, int compareTID) {
+__host__ int getStrongerThreadIndex(int * oldWeight, int * oldDst, int curTID, int compareTID) {
     int strongerIndex;
     const int COMPARE_T_WEIGHT = oldWeight[compareTID];
     const int CUR_T_WEIGHT = oldWeight[curTID];
