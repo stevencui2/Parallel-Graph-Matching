@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int getStrongerThreadIndex(int * oldWeight, int * oldDst, int curTID, int compareTID) {
+__global__ int getStrongerThreadIndex(int * oldWeight, int * oldDst, int curTID, int compareTID) {
     int strongerIndex;
     const int COMPARE_T_WEIGHT = oldWeight[compareTID];
     const int CUR_T_WEIGHT = oldWeight[curTID];
@@ -43,7 +43,7 @@ __global__ void strongestNeighborScan_gpu(
         ) {
     // Calculate thread work
     const int NUM_THREADS = blockDim.x * gridDim.x;
-    const int THREAD_WORK = numEdges / NUM_THREADS;
+    // const int THREAD_WORK = numEdges / NUM_THREADS;
 
     //Get thread ID
     const int FIRST_T_ID = blockIdx.x * blockDim.x + threadIdx.x;
