@@ -48,27 +48,27 @@ __global__ void strongestNeighborScan_gpu(
     //Get thread ID
     const int FIRST_T_ID = blockIdx.x * blockDim.x + threadIdx.x;
 
-    for(const int CUR_T_ID = FIRST_T_ID; CUR_T_ID <= numEdges; CUR_T_ID += NUM_THREADS) {
+    for(int curTID = FIRST_T_ID; curTID <= numEdges; curTID += NUM_THREADS) {
         // get compare thread index, enforce 0 bound
-        const int COMPARE_T_ID = CUR_T_ID - distance > 0 ? CUR_T_ID - distance : 0;
+        const int COMPARE_T_ID = curTID - distance > 0 ? curTID - distance : 0;
 
         // case : shared segment
-        if( src[COMPARE_T_ID] == src[CUR_T_ID]) {
-            const int STRONGER_INDEX = getStrongerThreadIndex(oldWeight, oldDst, CUR_T_ID, COMPARE_T_ID);
+        if( src[COMPARE_T_ID] == src[curTID]) {
+            const int STRONGER_INDEX = getStrongerThreadIndex(oldWeight, oldDst, curTID, COMPARE_T_ID);
             //Set new destination
-            newDst[CUR_T_ID] = oldDst[STRONGER_INDEX];
+            newDst[curTID] = oldDst[STRONGER_INDEX];
 
             //Set new weight
-            newWeight[CUR_T_ID] = oldWeight[STRONGER_INDEX];
+            newWeight[curTID] = oldWeight[STRONGER_INDEX];
 
             //Flag any changes
-            if(newDst[CUR_T_ID] != oldDst[CUR_T_ID]) { *madeChanges = 1; };
+            if(newDst[curTID] != oldDst[curTID]) { *madeChanges = 1; };
         }
         // case : different segment
         else {
             // defaults to no change
-            newDst[CUR_T_ID] = oldDst[CUR_T_ID];
-            newWeight[CUR_T_ID] = oldWeight[CUR_T_ID];
+            newDst[curTID] = oldDst[curTID];
+            newWeight[curTID] = oldWeight[curTID];
         }
     }
 }
