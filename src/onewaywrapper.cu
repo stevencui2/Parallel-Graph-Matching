@@ -185,7 +185,7 @@ void one_way_handshake_wrapper(GraphData graph, int *& matches, int numthreads)
 
     fprintf(stderr, "Done matching.\n");
 
-    fprintf(stderr, "Performed matching for %ld iterations\n", iter);
+    fprintf(stderr, "Performed matching for %i iterations\n", iter);
     fprintf(stderr, "One Way Handshaking Matching Time: %.2f ms\n",
             getTime(&beginTime, &endTime));
 }

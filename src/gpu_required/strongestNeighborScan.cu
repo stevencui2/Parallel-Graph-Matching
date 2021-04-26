@@ -25,7 +25,7 @@ __global__ void strongestNeighborScan_gpu(
         const int COMPARE_T_ID = curTID - distance > 0 ? curTID - distance : 0;
 
         // case : shared segment
-        if( src[COMPARE_T_ID] == src[curTID]) {
+        if( src[COMPARE_T_ID] == src[curTID] ) {
             int strongerIndex;
             const int COMPARE_T_WEIGHT = oldWeight[COMPARE_T_ID];
             const int CUR_T_WEIGHT = oldWeight[curTID];
