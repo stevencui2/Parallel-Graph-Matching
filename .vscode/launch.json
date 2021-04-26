@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching\\gsn",
-            "args": ["testcases/input9.mtx", "out.txt", "108"],
+            "args": ["testcases/input9.mtx", "out.txt", "1024"],
             "stopAtEntry": false,
             "cwd": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching",
             "environment": [],

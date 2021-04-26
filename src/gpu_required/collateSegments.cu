@@ -8,13 +8,19 @@
 #include <stdlib.h>
 
 __global__ void collateSegments_gpu(int * src, int * scanResult, int * output, int numEdges) {
-    //Get thread ID
-    int tID = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Get Thread ID
+    const int NUM_THREADS = blockDim.x * gridDim.x;
+    const int COL = blockIdx.x * blockDim.x + threadIdx.x;
+    const int ROW = blockIdx.y * blockDim.y + threadIdx.y;
+    const int FIRST_T_ID = COL + ROW * NUM_THREADS;
 
     //Terminate if thread ID is larger than array
-    if(tID >= numEdges) return;
+    if(FIRST_T_ID >= numEdges) return;
 
-    if(src[tID] != src[tID+1]) {
-        output[src[tID]] = scanResult[tID];
+    for(int curTID = FIRST_T_ID; curTID <= numEdges; curTID += NUM_THREADS) {
+        if(src[curTID] != src[curTID+1]) {
+            output[src[curTID]] = scanResult[curTID];
+        }
     }
 }
