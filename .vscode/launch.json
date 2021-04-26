@@ -5,10 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "(gdb) Launch gsn",
             "type": "cppdbg",
             "request": "launch",
             "program": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching\\gsn",
+            "args": ["testcases/input9.mtx", "out.txt", "1024"],
+            "stopAtEntry": false,
+            "cwd": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(gdb) Launch match",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching\\match",
             "args": ["testcases/input9.mtx", "out.txt", "1024"],
             "stopAtEntry": false,
             "cwd": "\\ilab\\users\\hnm21\\Desktop\\dev\\parallel-graph-matching",
