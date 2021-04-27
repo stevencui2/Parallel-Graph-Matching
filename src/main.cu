@@ -1,9 +1,8 @@
-/*
- **********************************************
- *  CS314 Principles of Programming Languages *
- *  Spring 2020                               *
- **********************************************
- */
+/**
+* Title: main.cu
+* Date: Spring 2020
+* @author Prof. Zheng Zhang, Teaching Assistants
+*/
 #include "utils.hpp"
 #include <strings.h>
 #include "DataStructure.hpp"

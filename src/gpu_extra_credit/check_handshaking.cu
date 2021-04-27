@@ -1,20 +1,12 @@
+/**
+* Title: check_handshaking.cu
+* Date: Spring 2020, revised Spring 2021
+* @author Hugo De Moraes
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
-
-/*
-strong neighbors
-5
-7
-8
-4
-3
-0
-7
-1
-2
-1
-*/
 __global__ void check_handshaking_gpu(int * strongNeighbor, int * matches, int numNodes) {
 	// Get Thread ID
 	const int NUM_THREADS = blockDim.x * gridDim.x;

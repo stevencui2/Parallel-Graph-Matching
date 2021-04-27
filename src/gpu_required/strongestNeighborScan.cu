@@ -1,3 +1,9 @@
+/**
+* Title: strongestNeighborScan.cu
+* Date: Spring 2020, revised Spring 2021
+* @author Hugo De Moraes
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
