@@ -15,7 +15,7 @@ __global__ void strongestNeighborScan_gpu(
     const int ROW = blockIdx.y * blockDim.y + threadIdx.y;
     const int FIRST_T_ID = COL + ROW * NUM_THREADS;
 
-    for(int curTID = FIRST_T_ID; curTID <= numEdges; curTID += NUM_THREADS) {
+    for(int curTID = FIRST_T_ID; curTID < numEdges; curTID += NUM_THREADS) {
         // get compare thread index, enforce 0 bound
         const int COMPARE_T_ID = curTID - distance > 0 ? curTID - distance : 0;
 

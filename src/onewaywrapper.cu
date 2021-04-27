@@ -91,11 +91,15 @@ int one_way_handshake(GraphData graph, int *& matches, int numthreads)
 		collateSegments_gpu<<<num_thread_blocks, threadsPerBlock>>>(src_gpu,strongestDst_gpu, strongNeighbor_gpu, numEdges);
 		temp1_gpu = strongestDst_gpu;
 		strongestDst_gpu = NULL;
+
+		std::cout << "collateSegments_gpu complete \n";
 		
 		//reminder: expected first iteration strongNeighbor_gpu: 3 4 5 4 1 2 3 4 7
 		
         //Step 2: Each vertex checks if there is a handshaking
         check_handshaking_gpu<<<num_thread_blocks, threadsPerBlock>>>(strongNeighbor_gpu, matches_gpu, numVertices);
+
+		std::cout << "check_handshaking_gpu complete \n";
 		
 		//Step 3: filter
 		
@@ -104,6 +108,7 @@ int one_way_handshake(GraphData graph, int *& matches, int numthreads)
 		temp1_gpu = NULL;
 		markFilterEdges_gpu<<<num_thread_blocks, threadsPerBlock>>>(src_gpu, dst_gpu, matches_gpu, keepEdges_gpu, numEdges);
 		
+		std::cout << "markFilterEdges_gpu complete \n";
 		
 		//Step 3b: get new indices in edge list for the edges we're going to keep
 		int * newEdgeLocs_gpu = keepEdges_gpu;
@@ -112,6 +117,8 @@ int one_way_handshake(GraphData graph, int *& matches, int numthreads)
 			exclusive_prefix_sum_gpu<<<num_thread_blocks, threadsPerBlock>>>(newEdgeLocs_gpu, temp2_gpu, distance, numEdges+1);
 			swapArray((void**) &newEdgeLocs_gpu, (void**) &temp2_gpu);
 		}
+
+		std::cout << "exclusive_prefix_sum_gpu complete \n";
 		
 		//note: temp1 is still in use, until we're done with newEdgeLocs_gpu
 		
@@ -128,6 +135,7 @@ int one_way_handshake(GraphData graph, int *& matches, int numthreads)
 		
 		//Step 3d: pack the src, dst, and weight arrays in accordance with new edge locations
 		packGraph_gpu<<<num_thread_blocks, threadsPerBlock>>>(temp2_gpu, src_gpu, temp3_gpu, dst_gpu, temp4_gpu, weight_gpu, newEdgeLocs_gpu, numEdges);
+		std::cout << "packGraph_gpu complete \n";
 		swapArray((void**) &temp2_gpu, (void**) &src_gpu);
 		swapArray((void**) &temp3_gpu, (void**) &dst_gpu);
 		swapArray((void**) &temp4_gpu, (void**) &weight_gpu);

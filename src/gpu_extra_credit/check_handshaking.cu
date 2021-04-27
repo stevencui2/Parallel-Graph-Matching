@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/*
+strong neighbors
+5
+7
+8
+4
+3
+0
+7
+1
+2
+1
+*/
 __global__ void check_handshaking_gpu(int * strongNeighbor, int * matches, int numNodes) {
 	// Get Thread ID
 	const int NUM_THREADS = blockDim.x * gridDim.x;
@@ -9,8 +23,10 @@ __global__ void check_handshaking_gpu(int * strongNeighbor, int * matches, int n
 	const int FIRST_T_ID = COL + ROW * NUM_THREADS;
 
 	for(int curTID = FIRST_T_ID; curTID <= numNodes; curTID += NUM_THREADS) {
-		if(strongNeighbor[curTID] == strongNeighbor[curTID+1] && matches[curTID] == -1){
-			matches[curTID] = strongNeighbor[curTID+1];
+		if(matches[curTID] == -1) {
+			if(curTID == strongNeighbor[strongNeighbor[curTID]]) {
+				matches[curTID] = strongNeighbor[curTID];
+			}
 		}
 	}
 }

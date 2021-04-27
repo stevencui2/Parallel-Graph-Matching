@@ -9,7 +9,7 @@ __global__ void collateSegments_gpu(int * src, int * scanResult, int * output, i
     const int ROW = blockIdx.y * blockDim.y + threadIdx.y;
     const int FIRST_T_ID = COL + ROW * NUM_THREADS;
 
-    for(int curTID = FIRST_T_ID; curTID <= numEdges; curTID += NUM_THREADS) {
+    for(int curTID = FIRST_T_ID; curTID < numEdges; curTID += NUM_THREADS) {
         if(src[curTID] != src[curTID+1]) {
             output[src[curTID]] = scanResult[curTID];
         }
