@@ -1,8 +1,8 @@
 /**
-* Title: strongwrapper.cu
-* Date: Spring 2020
-* @author Prof. Zheng Zhang, Teaching Assistants
-*/
+ * @file strongwrapper.cu
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
+ */
 #include "utils.hpp"
 #include "gpuHeaders.cuh"
 #include <iostream>

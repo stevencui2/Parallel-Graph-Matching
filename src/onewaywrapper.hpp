@@ -1,8 +1,8 @@
 /**
-* Title: onewaywrapper.hpp
-* Date: Spring 2020
-* @author Prof. Zheng Zhang, Teaching Assistants
-*/
+ * @file onewaywrapper.hpp
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
+ */
 #include "utils.hpp"
 
 #ifndef wrapper789_h

@@ -1,8 +1,8 @@
 /**
-* Title: strongwrapper.hpp
-* Date: Spring 2020
-* @author Prof. Zheng Zhang, Teaching Assistants
-*/
+ * @file strongwrapper.hpp
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
+ */
 #include "utils.hpp"
 
 #ifndef strongwrap_h

@@ -1,9 +1,8 @@
-/*
- **********************************************
- *  CS314 Principles of Programming Languages *
- *  Spring 2020                               *
- **********************************************
- */
+/**
+ * @file dataStrucutre.hpp
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
+*/
 #ifndef DATASTRUCTURE_H
 #define DATASTRUCTURE_H
 

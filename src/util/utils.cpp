@@ -1,8 +1,7 @@
-/*
- **********************************************
- *  CS314 Principles of Programming Languages *
- *  Spring 2020                               *
- **********************************************
+/**
+ * @file utils.cpp
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
  */
 #include <vector>
 #include <algorithm>

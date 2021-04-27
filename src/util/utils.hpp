@@ -1,8 +1,7 @@
-/*
- **********************************************
- *  CS314 Principles of Programming Languages *
- *  Spring 2020                               *
- **********************************************
+/**
+ * @file utils.hpp
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
  */
 #ifndef UTILS_H
 #define UTILS_H

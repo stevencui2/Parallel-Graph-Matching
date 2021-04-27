@@ -1,8 +1,8 @@
 /**
-* Title: mainStrong.cu
-* Date: Spring 2020
-* @author Prof. Zheng Zhang, Teaching Assistants
-*/
+ * @file mainStrong.cu
+ * @date Spring 2020
+ * @author Prof. Zheng Zhang, Teaching Assistants
+ */
 #include "utils.hpp"
 #include <strings.h>
 #include "DataStructure.hpp"
