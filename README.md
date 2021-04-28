@@ -7,14 +7,14 @@ Given a graph G = (V, E), while V is the set of vertices (also called nodes) and
 
 A maximum matching can be defined as a matching where the total weight of the edges in the matching is maximized. In Fig. 1, (c) is a maximum matching, where the total weight of the edges in the matching is 7. Fig. (a) and (b) respectively have the total weight of 3 and 2.
 
-<!-- Figure -->
+![Figure 1](https://github.com/demoraeshugo/Parallel-Graph-Matching/blob/main/resources/fig1.png)
 
 ### Parallel Graph Matching
 Most well-known matching algorithms such as blossom algorithm are embarrassingly sequen- tial and hard to parallelize. In this project, we will be adopting handshaking-based algorithm that is amenable to parallelization and can be a good fit for GPUs.
 
 In the handshaking-based algorithm, a vertex v extends a hand to one of its neighbours and the neighbor must be sitting on the maximum-weight edge incident to v. If two vertices shake hands, the edge between these two vertices will be added to the matching. An example is shown in Fig. 2 (b) where node A extends a hand to D since edge(A,D) has the largest weight among all edges incident to node A; Nodes C and F shake hands because they extend a hand to each other.
 
-<!-- Figure -->
+![Figure 2](https://github.com/demoraeshugo/Parallel-Graph-Matching/blob/main/resources/fig2.png)
 
 It is possible that multiple incident edges of a node have maximum weight. In this project, we let the algorithm pick the neighbor vertex that has the smallest vertex index. For example, in Fig. 2(b), among the maximum-weight neighbors of vertex E, we pick vertex B since it has the smallest index (in alphabetical order) among all E’s edges that have maximum-weight 4.
 
