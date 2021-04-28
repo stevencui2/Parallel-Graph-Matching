@@ -6,9 +6,7 @@
  * @author Prof. Zheng Zhang, Teaching Assistants
  *
  *  See http://math.nist.gov/MatrixMarket for details.
-*/
-
-
+ */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

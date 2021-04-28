@@ -3,10 +3,22 @@
  * @date Spring 2020, revised Spring 2021
  * @author Hugo De Moraes
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * Scans input in parallel picks two elements with a stride s, checks if these two elements are in the same segment; 
+ * if so, it compares the two elements, store the maximum one in the appropriate location in the output array. 
+ *
+ * @param src input array that denotes each segment in the graph
+ * @param oldDst input array that denotes the destination of each edge in src
+ * @param newDst output array to be modified with new greatest destinatuon
+ * @param oldWeight input array that denotes the weight of each edge in src
+ * @param newWeight output array to be modified with new greatest edge weight
+ * @param madeChanges integer flag for any changed made by function
+ * @param distance stride distance
+ * @param numEdges the number of edges/elements in the above arrays
+ */
 __global__ void strongestNeighborScan_gpu(
         int * src,
         int * oldDst, int * newDst,
@@ -65,3 +77,10 @@ __global__ void strongestNeighborScan_gpu(
         }
     }
 }
+/**
+ * During each iteration of parallel segment-scan, each (independent) task picks two elements with a stride s, 
+ * checks if these two elements are in the same segment; 
+ * if so, it compares the two elements, store the maximum one in the appropriate location in the output array. 
+ * A parallel segment-scan may involve multiple iterations, 
+ * the first iteration uses stride s = 1 and the stride s doubles at every iteration.
+ */
